@@ -38,6 +38,7 @@ section nav img#logo-greesy {
     color: white;
     font-weight: 100;
     padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar-links li:hover {
@@ -97,6 +98,7 @@ section nav img#logo-greesy {
   }
 
   section div#cards-container{
+    margin: 5rem 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
