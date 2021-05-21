@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "tauxRemplissage": 95,
+        "lat": 45.23773,
+        "long": 5.8036,
+        "ville": "Biviers",
+        "rue": "Chemin des evequaux",
+        "numero": 123,
+        "codeP": 38330
+    },
+    {
+        "id": 2,
+        "tauxRemplissage": 47,
+        "lat": 58.23773,
+        "long": 12.8036,
+        "ville": "Saint-Ismier",
+        "rue": "Parking Bériot",
+        "numero": 235,
+        "codeP": 38330
+    },
+    {
+        "id": 3,
+        "tauxRemplissage": 10,
+        "lat": 58.23773,
+        "long": 12.8036,
+        "ville": "Corenc",
+        "rue": "Parking Bériot",
+        "numero": 235,
+        "codeP": 38330
+    }
+]
