@@ -48,7 +48,7 @@ export class MapComponent implements OnInit {
       ],
       view: new View({
         center: [0, 0],
-        zoom: 2
+        zoom: 4
       }),
       target: 'map'
     });

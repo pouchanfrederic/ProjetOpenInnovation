@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChaletsService } from '../services/chalets.service';
 
 @Component({
   selector: 'app-chalets-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChaletsListComponent implements OnInit {
 
-  constructor() { }
+  dataSource;
+  displayedColumns: string[] = ['id', 'numero', 'rue', 'ville', 'tauxRemplissage'];
+
+  constructor(private cs: ChaletsService) { }
 
   ngOnInit(): void {
+    this.cs.getAllChalets().subscribe( data => this.dataSource = data);
   }
 
 }
