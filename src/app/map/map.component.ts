@@ -135,8 +135,8 @@ export class MapComponent implements OnInit {
         new TileLayer({source: new OSM()})
       ],
       view: new View({
-        center: [350000, 5500000],
-        zoom: 10
+        center: [652000, 5660000],
+        zoom: 12
       }),
       target: 'map'
     });
