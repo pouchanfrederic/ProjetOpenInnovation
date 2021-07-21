@@ -1,3 +1,11 @@
+# Choses à faire :
+
+- Ajouter des cases à cocher à côté des lignes du tableaux pour les sélectionner et les ajouter à l'itinéraire
+- Faire un for each qui prend tous les éléments du tableau pour en faire un itinéraire
+- Ajouter une fonction de filtre de tableau, par ville, ou par taux de remplissage
+- Voir pour le côté responsive
+
+
 # Choix techno
 
 OpenStreetMap et OpenLayers pour l'affichage de la carte : https://openlayers.org/  
