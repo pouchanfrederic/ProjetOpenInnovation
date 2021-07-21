@@ -77,6 +77,11 @@ export class MapComponent implements OnInit {
           geometry: new Point(routeSimple.getLastCoordinate()),
         });
 
+        const middleMarker = new Feature({
+          type: 'icon',
+          geometry: new Point([5.755975,45.215054]),
+        });
+        middleMarker.getGeometry().transform('EPSG:4326','EPSG:3857');
         // const position = startMarker.getGeometry().clone();
         // const geoMarker = new Feature({
         //   type: 'geoMarker',
@@ -110,7 +115,7 @@ export class MapComponent implements OnInit {
 
         const vectorLayer = new VectorLayer({
           source: new VectorSource({
-            features: [routeFeature, startMarker, endMarker],
+            features: [routeFeature, startMarker,middleMarker, endMarker],
           }),
           style: function (feature) {
             return styles[feature.get('type')];
@@ -130,8 +135,8 @@ export class MapComponent implements OnInit {
         new TileLayer({source: new OSM()})
       ],
       view: new View({
-        center: [0, 0],
-        zoom: 4
+        center: [350000, 5500000],
+        zoom: 10
       }),
       target: 'map'
     });
