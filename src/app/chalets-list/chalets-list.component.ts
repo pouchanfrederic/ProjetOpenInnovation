@@ -10,11 +10,21 @@ import { ChaletsService } from '../services/chalets.service';
 export class ChaletsListComponent implements OnInit {
 
   @Input('chalets') dataSource: Chalet[];
-  displayedColumns: string[] = ['id', 'numero', 'rue', 'ville', 'tauxRemplissage'];
+  displayedColumns: string[] = ['entite', 'type', 'adresse', 'ville','codeP', 'tauxRemplissage'];
 
   constructor(private cs: ChaletsService) { }
 
   ngOnInit(): void {
+  }
+
+  getClass(chalet : Chalet){
+      if (chalet.tauxRemplissage < 0.4){
+          return 'low';
+      }
+      else if(chalet.tauxRemplissage > 0.7){
+        return 'high';
+      }
+      return 'medium'
   }
 
 }

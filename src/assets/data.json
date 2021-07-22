@@ -1,32 +1,533 @@
 [
-    {
-        "id": 1,
-        "tauxRemplissage": 95,
-        "lat": 45.256708,
-        "long": 5.870546,
-        "ville": "Biviers",
-        "rue": "Chemin des evequaux",
-        "numero": 123,
-        "codeP": 38330
-    },
-    {
-        "id": 2,
-        "tauxRemplissage": 47,
-        "lat": 45.215054,
-        "long": 5.755975,
-        "ville": "Saint-Ismier",
-        "rue": "Parking Bériot",
-        "numero": 235,
-        "codeP": 38330
-    },
-    {
-        "id": 3,
-        "tauxRemplissage": 10,
-        "lat": 45.23773,
-        "long": 5.8036,
-        "ville": "Corenc",
-        "rue": "Parking Bériot",
-        "numero": 235,
-        "codeP": 38330
-    }
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Boutique / Point de Vente",
+   "adresse": "95 rue des grives",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.2718827",
+   "long": "5.8914758"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "450 rue des sources",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.2720623",
+   "long": "5.8921077"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "ZA LONGS PRES",
+   "codeP": 38660,
+   "ville": "LUMBIN",
+   "lat": "45.302935604592264",
+   "long": "5.906455993653367"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "RD1090 rond point",
+   "codeP": 38660,
+   "ville": "LE TOUVET",
+   "lat": "45.358153178937314",
+   "long": "5.955213502807624"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "parking",
+   "codeP": 38660,
+   "ville": "LE TOUVET",
+   "lat": "45.3558769226",
+   "long": "5.91809558868"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "ZA DU BRESSON",
+   "codeP": 38660,
+   "ville": "LE TOUVET",
+   "lat": "45.361549146561885",
+   "long": "5.960807800293878"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "LE CARRE  VEGA",
+   "codeP": 38660,
+   "ville": "LA TERRASSE",
+   "lat": "45.315226732541014",
+   "long": "5.923677253967298"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "PLACE DE LA MAIRIE",
+   "codeP": 38660,
+   "ville": "LA TERRASSE",
+   "lat": "45.323037389433665",
+   "long": "5.930838746032691"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Parking du cimetičre",
+   "codeP": 38570,
+   "ville": "GONCELIN",
+   "lat": "45.350254185872",
+   "long": "5.977724069583"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Place de la GARE",
+   "codeP": 38570,
+   "ville": "GONCELIN",
+   "lat": "45.341975002824995",
+   "long": "5.974549293518976"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Parking Poulatičre",
+   "codeP": 38330,
+   "ville": "ST ISMIER",
+   "lat": "45.25176357666704",
+   "long": "5.83636317418825"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "Route de Meylan",
+   "codeP": 38330,
+   "ville": "BIVIERS",
+   "lat": "45.23773",
+   "long": "5.8036"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "Parking MOIDIEU",
+   "codeP": 38330,
+   "ville": "BIVIERS",
+   "lat": "45.23793868288619",
+   "long": "5.802965164188663"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "17 avenue Joliot Curie",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.2842115",
+   "long": "5.8837615"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "rue François Mitterrand",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.278324",
+   "long": "5.883496"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "Av Amboise Croizat",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.27639",
+   "long": "5.873675"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "Place de la Fontaine",
+   "codeP": 38190,
+   "ville": "LE CHAMP PRES FROGES",
+   "lat": "45.27372989493328",
+   "long": "5.925261008459529"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "Place Fontenette",
+   "codeP": 38660,
+   "ville": "SAINT HILAIRE",
+   "lat": "45.353735988445",
+   "long": "5.9141416969101"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "Place Robert Shuman",
+   "codeP": 38330,
+   "ville": "MONTBONNOT",
+   "lat": "45.221927199030354",
+   "long": "5.812753703041039"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "RD1090",
+   "codeP": 38330,
+   "ville": "MONTBONNOT",
+   "lat": "45.2255017900632",
+   "long": "5.801358089904852"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Pres de l'Eau",
+   "codeP": 38330,
+   "ville": "MONTBONNOT",
+   "lat": "45.22545149753904",
+   "long": "5.818713119049107"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": ",RD1090 FaceSuperU",
+   "codeP": 38330,
+   "ville": "MONTBONNOT",
+   "lat": "45.23893661697145",
+   "long": "5.818370342254639"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Av. du Grésivaudan",
+   "codeP": 38570,
+   "ville": "TENCIN",
+   "lat": "45.30125662524121",
+   "long": "5.952141476135239"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Parking Bériot",
+   "codeP": 38330,
+   "ville": "ST ISMIER",
+   "lat": "45.2413",
+   "long": "5.82147"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Rue ambroise Coizat Face au LIDL",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.2743429",
+   "long": "5.884021"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Centre Village",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.2835755",
+   "long": "5.8817673"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "RD1090",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.298817",
+   "long": "5.899412"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Parking",
+   "codeP": 38330,
+   "ville": "MONTBONNOT",
+   "lat": "45.22880944280169",
+   "long": "5.817472113800022"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Parking",
+   "codeP": 38330,
+   "ville": "MONTBONNOT",
+   "lat": "45.22537173854217",
+   "long": "5.810011031677277"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Boutique / Point de Vente",
+   "adresse": "Rue de l'abergement",
+   "codeP": 38660,
+   "ville": "LE TOUVET",
+   "lat": "45.36158763317164",
+   "long": "5.962285238098161"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Rue des chevalličres",
+   "codeP": 38330,
+   "ville": "BIVIERS",
+   "lat": "45.244604238451316",
+   "long": "5.807319671441633"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "RUE DE L'EGLISE",
+   "codeP": 38330,
+   "ville": "BIVIERS",
+   "lat": "45.23738006575658",
+   "long": "5.796959126428192"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "ESPACE BELLE ETOILE",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.2732554",
+   "long": "5.893464"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "chemin du Mollard",
+   "codeP": 38420,
+   "ville": "SAINT JEAN LE VIEUX",
+   "lat": "45.2090669963839",
+   "long": "5.87355996560666"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Chemin de NAYSORD",
+   "codeP": 38420,
+   "ville": "SAINT JEAN LE VIEUX",
+   "lat": "45.21117043393702",
+   "long": "5.883317470550537"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Parking covoiturage",
+   "codeP": 38190,
+   "ville": "BERNIN",
+   "lat": "45.26369865544158",
+   "long": "5.87568473815918"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "RD 1090",
+   "codeP": 38190,
+   "ville": "BERNIN",
+   "lat": "45.271662994818",
+   "long": "5.868973062040709"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "RD 1090",
+   "codeP": 38660,
+   "ville": "LUMBIN",
+   "lat": "45.306326671927145",
+   "long": "5.911487512791382"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "rue de bresson",
+   "codeP": 38660,
+   "ville": "LE TOUVET",
+   "lat": "45.363369",
+   "long": "5.957192"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "62 rue Aristide Berges",
+   "codeP": 38190,
+   "ville": "LANCEY",
+   "lat": "45.2339931",
+   "long": "5.8822271"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "rue du clos",
+   "codeP": 38580,
+   "ville": "ALLEVARD",
+   "lat": "45.392642",
+   "long": "6.070483"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "place de Verdun",
+   "codeP": 38580,
+   "ville": "ALLEVARD",
+   "lat": "45.395388",
+   "long": "6.076077"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "chemin de la touviere",
+   "codeP": 38580,
+   "ville": "ALLEVARD",
+   "lat": "45.401181",
+   "long": "6.079395"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Pkg salle des fętes",
+   "codeP": 38830,
+   "ville": "CRETS EN BELLEDONNE",
+   "lat": "45.2233",
+   "long": "6.0255"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "75 rue des ecoles",
+   "codeP": 38830,
+   "ville": "CRETS EN BELLEDONNE",
+   "lat": "45.3731919",
+   "long": "6.0470143"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "le rapin",
+   "codeP": 38830,
+   "ville": "CRETS EN BELLEDONNE",
+   "lat": "45.37189893097",
+   "long": "6.0469363792568"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "place du stade",
+   "codeP": 38830,
+   "ville": "CRETS EN BELLEDONNE",
+   "lat": "45.376649",
+   "long": "6.050942"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "route departementale 525",
+   "codeP": 38830,
+   "ville": "CRETS EN BELLEDONNE",
+   "lat": "45.367654",
+   "long": "6.040884"
+ },
+ {
+   "entiteProprietaire": "GRE'SY",
+   "type": "Conteneur",
+   "adresse": "rue du Grésivaudan",
+   "codeP": 73800,
+   "ville": "LAISSAUD",
+   "lat": "45.445347",
+   "long": "6.034571"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Boutique / Point de Vente",
+   "adresse": "79 rue du stade",
+   "codeP": 73800,
+   "ville": "LAISSAUD",
+   "lat": "45.445578",
+   "long": "6.034723"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Boutique / Point de Vente",
+   "adresse": "centre cial de Uexpress",
+   "codeP": 38570,
+   "ville": "TENCIN",
+   "lat": "45.3016137072187",
+   "long": "5.9522100227538886"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "SAMSE",
+   "codeP": 38130,
+   "ville": "ECHIROLLES",
+   "lat": "45.16024462093739",
+   "long": "5.714007315344247"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Aux roty",
+   "codeP": 38660,
+   "ville": "LE TOUVET",
+   "lat": "45.359267",
+   "long": "5.977688"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "rue du charmillon",
+   "codeP": 38660,
+   "ville": "LE TOUVET",
+   "lat": "45.35099",
+   "long": "5.947729"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Rue paul cretien",
+   "codeP": 38420,
+   "ville": "LE VERSOUD",
+   "lat": "45.212944",
+   "long": "5.858643"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Avenue Aristide Bergčs, ZAC des Chenevičres",
+   "codeP": 38420,
+   "ville": "DOMENE",
+   "lat": "45.206774",
+   "long": "5.82799"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Boutique / Point de Vente",
+   "adresse": "62 rue Aristide Berges",
+   "codeP": 38190,
+   "ville": "LANCEY",
+   "lat": "45.2339931",
+   "long": "5.8822271"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Route de Montouvrard",
+   "codeP": 38580,
+   "ville": "ALLEVARD",
+   "lat": "45.387541",
+   "long": "6.068545"
+ },
+ {
+   "entiteProprietaire": "GRESY",
+   "type": "Conteneur",
+   "adresse": "Rue de Belledonne",
+   "codeP": 38920,
+   "ville": "CROLLES",
+   "lat": "45.271308",
+   "long": "5.892955"
+ }
 ]

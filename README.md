@@ -4,7 +4,7 @@
 - Faire un for each qui prend tous les éléments du tableau pour en faire un itinéraire
 - Ajouter une fonction de filtre de tableau, par ville, ou par taux de remplissage
 - Voir pour le côté responsive
-
+- Ajouter des petites vignettes pour chaque point de collecte
 
 # Choix techno
 

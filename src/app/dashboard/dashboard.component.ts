@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { textHeights } from 'ol/render/canvas';
 import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
 
@@ -17,6 +18,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.cs.getAllChalets().subscribe( d => {
       this.chaletsList = d;
+      this.chaletsList.forEach(c => {
+        c.tauxRemplissage = Math.random();
+      });
+      this.chaletsList.sort((a,b) => b.tauxRemplissage - a.tauxRemplissage)
       this.isLoaded = true;
     });
   }
