@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, Input, NgZone, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
 import OSM, {ATTRIBUTION} from 'ol/source/OSM';
 import { Coordinate } from 'ol/coordinate';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { pipe } from 'rxjs';
+import { Observable, pipe, Subscription } from 'rxjs';
 import Feature from 'ol/Feature';
 import Map from 'ol/Map';
 import Point from 'ol/geom/Point';
@@ -34,11 +34,13 @@ interface Body {
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
 
   @Input() chalets: Chalet[];
   @Input() center: Coordinate;
   @Input() zoom: number;
+  @Input() updateMapObservable: Observable<Chalet[]>;
+  private eventSubscription: Subscription;
   map: Map;
   //public routeData;
   url = 'https://api.openrouteservice.org/v2/directions/driving-car';
@@ -51,6 +53,10 @@ export class MapComponent implements OnInit {
   constructor(private zone: NgZone, private cd: ChangeDetectorRef, private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.eventSubscription = this.updateMapObservable.subscribe((data => {
+      this.addRouteToMap(data);
+    }));
+    // TODO : refactor using the addRouteToMap method
     this.chalets.slice(0, 10).forEach(c => {
       this.body.coordinates.push([c.long, c.lat]);
     });
@@ -110,6 +116,10 @@ export class MapComponent implements OnInit {
     },  err => console.log(err.message));
   }
 
+  ngOnDestroy(){
+    this.eventSubscription.unsubscribe();
+  }
+
 
   private initMap(): void{
    
@@ -136,6 +146,10 @@ export class MapComponent implements OnInit {
       markers.push(marker);
     });
     return markers;
+  }
+
+  addRouteToMap(data){
+    console.log(data);
   }
 
 }

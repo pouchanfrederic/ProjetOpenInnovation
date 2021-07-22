@@ -1,4 +1,7 @@
+<button (click)="onDisplayMap()">{{displayMap ? 'Cacher la carte' : 'Afficher la carte'}}</button>
 <ng-container *ngIf="isLoaded">
-    <app-map [chalets]="chaletsList"></app-map>
-    <app-chalets-list [chalets]="chaletsList"></app-chalets-list>
+    <ng-container *ngIf="displayMap">
+        <app-map [updateMapObservable]="updateMapSubject.asObservable()" [chalets]="chaletsList"></app-map>
+    </ng-container>
+    <app-chalets-list (updateMapEvent)="updateMap($event)" [chalets]="chaletsList"></app-chalets-list>
 </ng-container>

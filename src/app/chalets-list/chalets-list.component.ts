@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Input } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Chalet } from '../models/chalet';
@@ -13,19 +13,21 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ChaletsListComponent implements OnInit {
 
+  @Output() updateMapEvent = new EventEmitter<Chalet[]>();
   @Input('chalets') chalets: Chalet[];
   dataSource : MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
   displayedColumns: string[] = ['entite', 'type', 'adresse', 'ville','codeP', 'tauxRemplissage', 'checkbox'];
-  selected : Chalet[];
-  constructor(private cs: ChaletsService) { }
+  selected : Chalet[] = [];
+  constructor() { }
   ngOnInit(): void {
-    this.cs.getAllChalets().subscribe( data => this.dataSource = new MatTableDataSource (data));
+    this.dataSource = new MatTableDataSource (this.chalets);
     
   }
   ngAfterViewChecked(){
     this.dataSource.sort  = this.sort;
   }
+  
   getClass(chalet : Chalet){
       if (chalet.tauxRemplissage < 0.4){
           return 'low';
@@ -46,6 +48,10 @@ export class ChaletsListComponent implements OnInit {
 		
 	}
 	console.log(this.selected);
+  }
+
+  onCalculateRouteClick(){
+    this.updateMapEvent.emit(this.selected);
   }
   
 

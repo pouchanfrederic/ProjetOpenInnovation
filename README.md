@@ -1,6 +1,5 @@
 # Choses à faire :
 
-- Ajouter des cases à cocher à côté des lignes du tableaux pour les sélectionner et les ajouter à l'itinéraire
 - Ajouter une fonction de filtre de tableau, par ville, ou par taux de remplissage
 - Voir pour le côté responsive
 - Ajouter des petites vignettes pour chaque point de collecte
@@ -14,5 +13,14 @@ OpenRouteService pour l'API de calcul d'itinéraire : https://openrouteservice.o
 ## Front
 
 Pagination du tableau
-Checkboxes
-Filtre et ordonnancement
+
+# API d'optimization
+
+## Contraintes 
+
+- Gratuites
+- Open source
+
+## API
+
+Graphhopper : https://www.graphhopper.com/developers/  
