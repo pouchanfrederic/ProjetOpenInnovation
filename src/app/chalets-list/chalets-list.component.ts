@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
 
@@ -10,7 +11,8 @@ import { ChaletsService } from '../services/chalets.service';
 export class ChaletsListComponent implements OnInit {
 
   @Input('chalets') dataSource: Chalet[];
-  displayedColumns: string[] = ['entite', 'type', 'adresse', 'ville','codeP', 'tauxRemplissage'];
+  selected : Chalet[] = [];
+  displayedColumns: string[] = ['entite', 'type', 'adresse', 'ville','codeP', 'tauxRemplissage', 'checkbox'];
 
   constructor(private cs: ChaletsService) { }
 
@@ -26,5 +28,18 @@ export class ChaletsListComponent implements OnInit {
       }
       return 'medium'
   }
+
+  cbxOnChange(matcheckbox : MatCheckboxChange, chalet : Chalet){
+    if(matcheckbox.checked){
+		this.selected.push(chalet);
+	}
+	else{
+		let index = this.selected.indexOf(chalet);
+		this.selected.splice(index, 1);
+		
+	}
+	console.log(this.selected);
+  }
+  
 
 }

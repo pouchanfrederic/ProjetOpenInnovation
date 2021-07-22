@@ -11,7 +11,7 @@ import { ChaletsListComponent } from './chalets-list/chalets-list.component';
 import { MapComponent } from './map/map.component';
 import {MatTableModule} from '@angular/material/table';
 import { DashboardComponent } from './dashboard/dashboard.component'; 
-
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
