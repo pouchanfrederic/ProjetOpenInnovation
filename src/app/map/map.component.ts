@@ -57,62 +57,12 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.eventSubscription = this.updateMapObservable.subscribe((data => {
-      this.addRouteToMap(data);
+      this.calulateNewRoute(data);
     }));
-    // TODO : refactor using the addRouteToMap method
-    this.chalets.slice(0, 10).forEach(c => {
-      this.body.coordinates.push([c.long, c.lat]);
-    });
     if (!this.map) {
       this.zone.runOutsideAngular(() => this.initMap());
     }
-    this.http.post(this.url, this.body, this.HttpOptions).subscribe(data => {
-      let routeData: any = data;
-
-      const polyline = routeData.routes[0].geometry;
-      const route = new Polyline()
-        .readGeometry(polyline, {
-          dataProjection: 'EPSG:4326',
-          featureProjection: 'EPSG:3857',
-        });
-      const routeFeature = new Feature({
-        type: 'route',
-        geometry: route,
-      });
-      const routeSimple = route as SimpleGeometry;
-
-      let markers = this.getMarkers(this.body.coordinates);
-
-      const styles = {
-        'route': new Style({
-          stroke: new Stroke({
-            width: 6,
-            color: [237, 212, 0, 0.8],
-          }),
-        }),
-        'icon': new Style({
-          image: new Icon({
-            anchor: [0.5, 1],
-            src: 'assets/images/icon.png',
-          }),
-        }),
-      };
-
-      this.vectorLayer = new VectorLayer({
-        source: new VectorSource({
-          features: [routeFeature, ...markers],
-        }),
-        style: function (feature) {
-          return styles[feature.get('type')];
-        },
-      });
-
-
-      this.map.addLayer(this.vectorLayer);
-
-      this.map.getView().fit(routeSimple.getExtent(),
-        { size: this.map.getSize(), padding: [50, 50, 50, 50] });
-    }, err => console.log(err.message));
+    this.addRouteToMap(this.chalets);
   }
 
   ngOnDestroy() {
@@ -147,11 +97,10 @@ export class MapComponent implements OnInit, OnDestroy {
     return markers;
   }
 
-  addRouteToMap(data) {
-
-    this.map.removeLayer(this.vectorLayer);
+  addRouteToMap(data){
     this.body = { 'coordinates': [] };
-    data.forEach(c => {
+    // TODO : manage API limitations
+    data.slice(0,10).forEach(c => {
       this.body.coordinates.push([c.long, c.lat]);
     });
 
@@ -200,6 +149,11 @@ export class MapComponent implements OnInit, OnDestroy {
       this.map.getView().fit(routeSimple.getExtent(),
         { size: this.map.getSize(), padding: [50, 50, 50, 50] });
     });
+  }
+
+  calulateNewRoute(data) {
+    this.map.removeLayer(this.vectorLayer);
+    this.addRouteToMap(data);
   }
 
 }
