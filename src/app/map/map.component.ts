@@ -102,9 +102,8 @@ export class MapComponent implements OnInit {
         let testExtent = this.getMarkers([[5.755975,45.215054], [ 5.870546,45.256708]]);
 
 
-        this.map.getView().fit([testExtent[0].values_.geometry.getCoordinates()[0], testExtent[0].values_.geometry.getCoordinates()[1],
-        testExtent[1].values_.geometry.getCoordinates()[0], testExtent[1].values_.geometry.getCoordinates()[1]],
-         {size: this.map.getSize()});
+        this.map.getView().fit(routeSimple.getExtent(),
+         {size: this.map.getSize(), padding: [50,50,50,50]});
     },  err => console.log(err.message));
   }
 
