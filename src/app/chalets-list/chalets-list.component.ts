@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Input } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
 import {MatSort} from '@angular/material/sort';
@@ -15,8 +16,8 @@ export class ChaletsListComponent implements OnInit {
   @Input('chalets') chalets: Chalet[];
   dataSource : MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = ['entite', 'type', 'adresse', 'ville','codeP', 'tauxRemplissage'];
-
+  displayedColumns: string[] = ['entite', 'type', 'adresse', 'ville','codeP', 'tauxRemplissage', 'checkbox'];
+  selected : Chalet[];
   constructor(private cs: ChaletsService) { }
   ngOnInit(): void {
     this.cs.getAllChalets().subscribe( data => this.dataSource = new MatTableDataSource (data));
@@ -34,5 +35,18 @@ export class ChaletsListComponent implements OnInit {
       }
       return 'medium'
   }
+
+  cbxOnChange(matcheckbox : MatCheckboxChange, chalet : Chalet){
+    if(matcheckbox.checked){
+		this.selected.push(chalet);
+	}
+	else{
+		let index = this.selected.indexOf(chalet);
+		this.selected.splice(index, 1);
+		
+	}
+	console.log(this.selected);
   }
   
+
+}

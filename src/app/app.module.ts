@@ -12,7 +12,7 @@ import { MapComponent } from './map/map.component';
 import {MatTableModule} from '@angular/material/table'; 
 import { MatSortModule } from '@angular/material/sort';
 import { DashboardComponent } from './dashboard/dashboard.component'; 
-
+import {MatCheckboxModule} from '@angular/material/checkbox'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
