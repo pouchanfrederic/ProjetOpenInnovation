@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChaletsListComponent } from './chalets-list/chalets-list.component';
 import { MapComponent } from './map/map.component';
 import {MatTableModule} from '@angular/material/table'; 
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatTableModule} from '@angular/material/table';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
