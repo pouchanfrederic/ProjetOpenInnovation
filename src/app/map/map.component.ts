@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, Input, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
-import OSM, {ATTRIBUTION} from 'ol/source/OSM';
+import OSM, { ATTRIBUTION } from 'ol/source/OSM';
 import { Coordinate } from 'ol/coordinate';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, pipe, Subscription } from 'rxjs';
@@ -19,8 +19,8 @@ import {
   Stroke,
   Style,
 } from 'ol/style';
-import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer';
-import {getVectorContext} from 'ol/render';
+import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
+import { getVectorContext } from 'ol/render';
 import SimpleGeometry from 'ol/geom/SimpleGeometry';
 import MultiLineString from 'ol/geom/MultiLineString';
 import LineString from 'ol/geom/LineString';
@@ -44,11 +44,14 @@ export class MapComponent implements OnInit, OnDestroy {
   map: Map;
   //public routeData;
   url = 'https://api.openrouteservice.org/v2/directions/driving-car';
-  body: Body = {'coordinates': []};
+  body: Body = { 'coordinates': [] };
   HttpOptions = {
-    headers: new HttpHeaders({'Authorization': '5b3ce3597851110001cf62480804046221a34fc9b4278ccde20986a9',
-                'Content-Type': 'Application/json; charset=UTF-8'})
+    headers: new HttpHeaders({
+      'Authorization': '5b3ce3597851110001cf62480804046221a34fc9b4278ccde20986a9',
+      'Content-Type': 'Application/json; charset=UTF-8'
+    })
   };
+  vectorLayer: VectorLayer<any>;
 
   constructor(private zone: NgZone, private cd: ChangeDetectorRef, private http: HttpClient) { }
 
@@ -60,9 +63,9 @@ export class MapComponent implements OnInit, OnDestroy {
     this.chalets.slice(0, 10).forEach(c => {
       this.body.coordinates.push([c.long, c.lat]);
     });
-    if(!this.map) {
+    if (!this.map) {
       this.zone.runOutsideAngular(() => this.initMap());
-    } 
+    }
     this.http.post(this.url, this.body, this.HttpOptions).subscribe(data => {
       let routeData: any = data;
 
@@ -72,60 +75,56 @@ export class MapComponent implements OnInit, OnDestroy {
           dataProjection: 'EPSG:4326',
           featureProjection: 'EPSG:3857',
         });
-        const routeFeature = new Feature({
-          type: 'route',
-          geometry: route,
-        });
-        const routeSimple = route as SimpleGeometry;
+      const routeFeature = new Feature({
+        type: 'route',
+        geometry: route,
+      });
+      const routeSimple = route as SimpleGeometry;
 
-        let markers = this.getMarkers(this.body.coordinates);
-        
-        const styles = {
-          'route': new Style({
-            stroke: new Stroke({
-              width: 6,
-              color: [237, 212, 0, 0.8],
-            }),
+      let markers = this.getMarkers(this.body.coordinates);
+
+      const styles = {
+        'route': new Style({
+          stroke: new Stroke({
+            width: 6,
+            color: [237, 212, 0, 0.8],
           }),
-          'icon': new Style({
-            image: new Icon({
-              anchor: [0.5, 1],
-              src: 'assets/images/icon.png',
-            }),
+        }),
+        'icon': new Style({
+          image: new Icon({
+            anchor: [0.5, 1],
+            src: 'assets/images/icon.png',
           }),
-        };
+        }),
+      };
 
-        const vectorLayer = new VectorLayer({
-          source: new VectorSource({
-            features: [routeFeature, ...markers],
-          }),
-          style: function (feature) {
-            return styles[feature.get('type')];
-          },
-        });
-
-
-        this.map.addLayer(vectorLayer);
-
-        // TODO : prendre les max et min dans l'objet de routeSimple
-        let testExtent = this.getMarkers([[5.755975,45.215054], [ 5.870546,45.256708]]);
+      this.vectorLayer = new VectorLayer({
+        source: new VectorSource({
+          features: [routeFeature, ...markers],
+        }),
+        style: function (feature) {
+          return styles[feature.get('type')];
+        },
+      });
 
 
-        this.map.getView().fit(routeSimple.getExtent(),
-         {size: this.map.getSize(), padding: [50,50,50,50]});
-    },  err => console.log(err.message));
+      this.map.addLayer(this.vectorLayer);
+
+      this.map.getView().fit(routeSimple.getExtent(),
+        { size: this.map.getSize(), padding: [50, 50, 50, 50] });
+    }, err => console.log(err.message));
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.eventSubscription.unsubscribe();
   }
 
 
-  private initMap(): void{
-   
+  private initMap(): void {
+
     this.map = new Map({
       layers: [
-        new TileLayer({source: new OSM()})
+        new TileLayer({ source: new OSM() })
       ],
       view: new View({
         center: [652000, 5660000],
@@ -135,21 +134,72 @@ export class MapComponent implements OnInit, OnDestroy {
     });
   }
 
-  getMarkers(coordinates: number[][]){
+  getMarkers(coordinates: number[][]) {
     let markers = [];
     coordinates.forEach(element => {
       let marker = new Feature({
         type: 'icon',
         geometry: new Point(element),
       });
-      marker.getGeometry().transform('EPSG:4326','EPSG:3857');
+      marker.getGeometry().transform('EPSG:4326', 'EPSG:3857');
       markers.push(marker);
     });
     return markers;
   }
 
-  addRouteToMap(data){
-    console.log(data);
+  addRouteToMap(data) {
+
+    this.map.removeLayer(this.vectorLayer);
+    this.body = { 'coordinates': [] };
+    data.forEach(c => {
+      this.body.coordinates.push([c.long, c.lat]);
+    });
+
+    this.http.post(this.url, this.body, this.HttpOptions).subscribe(data => {
+      let routeData: any = data;
+
+      const polyline = routeData.routes[0].geometry;
+      const route = new Polyline()
+        .readGeometry(polyline, {
+          dataProjection: 'EPSG:4326',
+          featureProjection: 'EPSG:3857',
+        });
+      const routeFeature = new Feature({
+        type: 'route',
+        geometry: route,
+      });
+      const routeSimple = route as SimpleGeometry;
+
+      let markers = this.getMarkers(this.body.coordinates);
+
+      const styles = {
+        'route': new Style({
+          stroke: new Stroke({
+            width: 6,
+            color: [237, 212, 0, 0.8],
+          }),
+        }),
+        'icon': new Style({
+          image: new Icon({
+            anchor: [0.5, 1],
+            src: 'assets/images/icon.png',
+          }),
+        }),
+      };
+
+
+      this.vectorLayer = new VectorLayer({
+        source: new VectorSource({
+          features: [routeFeature, ...markers],
+        }),
+        style: function (feature) {
+          return styles[feature.get('type')];
+        },
+      });
+      this.map.addLayer(this.vectorLayer);
+      this.map.getView().fit(routeSimple.getExtent(),
+        { size: this.map.getSize(), padding: [50, 50, 50, 50] });
+    });
   }
 
 }
