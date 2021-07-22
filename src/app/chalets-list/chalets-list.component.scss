@@ -2,6 +2,14 @@ table {
     width: 100%;
 }
 
-th.mat-sort-header-sorted {
-    color: black;
-  }
+.low {
+    color : green;
+}
+
+.medium{
+    color : orange;
+} 
+
+.high{
+    color : red;
+}

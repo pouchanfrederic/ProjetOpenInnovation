@@ -11,6 +11,7 @@ import { ChaletsListComponent } from './chalets-list/chalets-list.component';
 import { MapComponent } from './map/map.component';
 import {MatTableModule} from '@angular/material/table'; 
 import { MatSortModule } from '@angular/material/sort';
+import { DashboardComponent } from './dashboard/dashboard.component'; 
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatSortModule } from '@angular/material/sort';
     ConnexionComponent,
     HomeComponent,
     ChaletsListComponent,
-    MapComponent
+    MapComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

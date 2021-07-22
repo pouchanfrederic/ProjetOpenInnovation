@@ -1,4 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Input } from '@angular/core';
+import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -8,19 +10,29 @@ import {MatTableDataSource} from '@angular/material/table';
   templateUrl: './chalets-list.component.html',
   styleUrls: ['./chalets-list.component.scss']
 })
-export class ChaletsListComponent implements OnInit, AfterViewInit {
+export class ChaletsListComponent implements OnInit {
 
-  dataSource;
-  displayedColumns: string[] = ['id', 'numero', 'rue', 'ville', 'tauxRemplissage'];
+  @Input('chalets') chalets: Chalet[];
+  dataSource : MatTableDataSource<any>;
   @ViewChild(MatSort) sort: MatSort;
-  
+  displayedColumns: string[] = ['entite', 'type', 'adresse', 'ville','codeP', 'tauxRemplissage'];
+
   constructor(private cs: ChaletsService) { }
-
   ngOnInit(): void {
-    this.cs.getAllChalets().subscribe( data => this.dataSource = data);
+    this.cs.getAllChalets().subscribe( data => this.dataSource = new MatTableDataSource (data));
+    
   }
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+  ngAfterViewChecked(){
+    this.dataSource.sort  = this.sort;
   }
-
-}
+  getClass(chalet : Chalet){
+      if (chalet.tauxRemplissage < 0.4){
+          return 'low';
+      }
+      else if(chalet.tauxRemplissage > 0.7){
+        return 'high';
+      }
+      return 'medium'
+  }
+  }
+  
