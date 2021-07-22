@@ -4,11 +4,11 @@ OpenStreetMap et OpenLayers pour l'affichage de la carte : https://openlayers.or
 OpenRouteService pour l'API de calcul d'itinéraire : https://openrouteservice.org/dev/#/api-docs/v2/directions  
 --> Open-source et gratuits
 
-
-
 # TODO
 
 Import données
+
+tri des points en fonction des isochrones ?
 
 ## Front
 

@@ -36,7 +36,7 @@ export class MapComponent implements OnInit {
   map: Map;
   @Input() center: Coordinate;
   @Input() zoom: number;
-  public routeData;
+  //public routeData;
   url = 'https://api.openrouteservice.org/v2/directions/driving-car';
   body = {"coordinates":[[ 5.870546,45.256708],[5.755975,45.215054], [5.8036, 45.23773]]};
   HttpOptions = {
@@ -55,9 +55,9 @@ export class MapComponent implements OnInit {
     } 
     //setTimeout(()=>this.mapReady.emit(this.Map));
     this.http.post(this.url, this.body, this.HttpOptions).subscribe(data => {
-      this.routeData = data;
+      let routeData: any = data;
 
-      const polyline = this.routeData.routes[0].geometry;
+      const polyline = routeData.routes[0].geometry;
       const route = new Polyline()
         .readGeometry(polyline, {
           dataProjection: 'EPSG:4326',
@@ -68,26 +68,9 @@ export class MapComponent implements OnInit {
           geometry: route,
         });
         const routeSimple = route as SimpleGeometry;
-        const startMarker = new Feature({
-          type: 'icon',
-          geometry: new Point(routeSimple.getFirstCoordinate()),
-        });
-        const endMarker = new Feature({
-          type: 'icon',
-          geometry: new Point(routeSimple.getLastCoordinate()),
-        });
 
-        const middleMarker = new Feature({
-          type: 'icon',
-          geometry: new Point([5.755975,45.215054]),
-        });
-        middleMarker.getGeometry().transform('EPSG:4326','EPSG:3857');
-        // const position = startMarker.getGeometry().clone();
-        // const geoMarker = new Feature({
-        //   type: 'geoMarker',
-        //   geometry: position,
-        // });
-
+        let markers = this.getMarkers(this.body.coordinates);
+        
         const styles = {
           'route': new Style({
             stroke: new Stroke({
@@ -101,21 +84,11 @@ export class MapComponent implements OnInit {
               src: 'assets/images/icon.png',
             }),
           }),
-          // 'geoMarker': new Style({
-          //   image: new CircleStyle({
-          //     radius: 7,
-          //     fill: new Fill({color: 'black'}),
-          //     stroke: new Stroke({
-          //       color: 'white',
-          //       width: 2,
-          //     }),
-          //   }),
-          // }),
         };
 
         const vectorLayer = new VectorLayer({
           source: new VectorSource({
-            features: [routeFeature, startMarker,middleMarker, endMarker],
+            features: [routeFeature, ...markers],
           }),
           style: function (feature) {
             return styles[feature.get('type')];
@@ -124,6 +97,14 @@ export class MapComponent implements OnInit {
 
 
         this.map.addLayer(vectorLayer);
+
+        // TODO : prendre les max et min dans l'objet de routeSimple
+        let testExtent = this.getMarkers([[5.755975,45.215054], [ 5.870546,45.256708]]);
+
+
+        this.map.getView().fit([testExtent[0].values_.geometry.getCoordinates()[0], testExtent[0].values_.geometry.getCoordinates()[1],
+        testExtent[1].values_.geometry.getCoordinates()[0], testExtent[1].values_.geometry.getCoordinates()[1]],
+         {size: this.map.getSize()});
     },  err => console.log(err.message));
   }
 
@@ -142,8 +123,17 @@ export class MapComponent implements OnInit {
     });
   }
 
-  getmoncul() {
-    let n = 0;
-    return n;
+  getMarkers(coordinates: number[][]){
+    let markers = [];
+    coordinates.forEach(element => {
+      let marker = new Feature({
+        type: 'icon',
+        geometry: new Point(element),
+      });
+      marker.getGeometry().transform('EPSG:4326','EPSG:3857');
+      markers.push(marker);
+    });
+    return markers;
   }
+
 }
