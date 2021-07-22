@@ -51,7 +51,7 @@ export class MapComponent implements OnInit {
   constructor(private zone: NgZone, private cd: ChangeDetectorRef, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.chalets.forEach(c => {
+    this.chalets.slice(0, 10).forEach(c => {
       this.body.coordinates.push([c.long, c.lat]);
     });
     if(!this.map) {
