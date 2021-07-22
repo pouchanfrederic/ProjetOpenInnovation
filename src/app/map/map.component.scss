@@ -1,4 +1,18 @@
 .map {
     width: 50%;
     height: 400px;
+    margin-top: 5em;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    border:solid 3px #315dd4; 
+    border-radius:15px; 
+    overflow: hidden
+    
+}
+
+#map-section{
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
