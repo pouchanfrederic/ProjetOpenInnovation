@@ -9,7 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChaletsListComponent } from './chalets-list/chalets-list.component';
 import { MapComponent } from './map/map.component';
-import {MatTableModule} from '@angular/material/table'; 
+import {MatTableModule} from '@angular/material/table';
+import { DashboardComponent } from './dashboard/dashboard.component'; 
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {MatTableModule} from '@angular/material/table';
     ConnexionComponent,
     HomeComponent,
     ChaletsListComponent,
-    MapComponent
+    MapComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

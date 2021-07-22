@@ -2,8 +2,8 @@
     {
         "id": 1,
         "tauxRemplissage": 95,
-        "lat": 45.23773,
-        "long": 5.8036,
+        "lat": 45.256708,
+        "long": 5.870546,
         "ville": "Biviers",
         "rue": "Chemin des evequaux",
         "numero": 123,
@@ -12,8 +12,8 @@
     {
         "id": 2,
         "tauxRemplissage": 47,
-        "lat": 58.23773,
-        "long": 12.8036,
+        "lat": 45.215054,
+        "long": 5.755975,
         "ville": "Saint-Ismier",
         "rue": "Parking Bériot",
         "numero": 235,
@@ -22,8 +22,8 @@
     {
         "id": 3,
         "tauxRemplissage": 10,
-        "lat": 58.23773,
-        "long": 12.8036,
+        "lat": 45.23773,
+        "long": 5.8036,
         "ville": "Corenc",
         "rue": "Parking Bériot",
         "numero": 235,

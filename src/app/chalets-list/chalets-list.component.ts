@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
 
 @Component({
@@ -8,13 +9,12 @@ import { ChaletsService } from '../services/chalets.service';
 })
 export class ChaletsListComponent implements OnInit {
 
-  dataSource;
+  @Input('chalets') dataSource: Chalet[];
   displayedColumns: string[] = ['id', 'numero', 'rue', 'ville', 'tauxRemplissage'];
 
   constructor(private cs: ChaletsService) { }
 
   ngOnInit(): void {
-    this.cs.getAllChalets().subscribe( data => this.dataSource = data);
   }
 
 }

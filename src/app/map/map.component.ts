@@ -25,6 +25,10 @@ import SimpleGeometry from 'ol/geom/SimpleGeometry';
 import MultiLineString from 'ol/geom/MultiLineString';
 import LineString from 'ol/geom/LineString';
 
+interface Body {
+  'coordinates': number[][]
+}
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -32,28 +36,27 @@ import LineString from 'ol/geom/LineString';
 })
 export class MapComponent implements OnInit {
 
-  public chalets: Chalet[];
-  map: Map;
+  @Input() chalets: Chalet[];
   @Input() center: Coordinate;
   @Input() zoom: number;
+  map: Map;
   //public routeData;
   url = 'https://api.openrouteservice.org/v2/directions/driving-car';
-  body = {"coordinates":[[ 5.870546,45.256708],[5.755975,45.215054], [5.8036, 45.23773]]};
+  body: Body = {'coordinates': []};
   HttpOptions = {
     headers: new HttpHeaders({'Authorization': '5b3ce3597851110001cf62480804046221a34fc9b4278ccde20986a9',
                 'Content-Type': 'Application/json; charset=UTF-8'})
   };
 
-  constructor(private cs: ChaletsService, private zone: NgZone, private cd: ChangeDetectorRef, private http: HttpClient) { }
+  constructor(private zone: NgZone, private cd: ChangeDetectorRef, private http: HttpClient) { }
 
   ngOnInit(): void {
-		this.cs.getAllChalets().subscribe(data=>{
-			this.chalets = data;
-		});
+    this.chalets.forEach(c => {
+      this.body.coordinates.push([c.long, c.lat]);
+    });
     if(!this.map) {
-      this.zone.runOutsideAngular(() => this.initMap())
+      this.zone.runOutsideAngular(() => this.initMap());
     } 
-    //setTimeout(()=>this.mapReady.emit(this.Map));
     this.http.post(this.url, this.body, this.HttpOptions).subscribe(data => {
       let routeData: any = data;
 
