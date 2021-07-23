@@ -1,11 +1,20 @@
 <section id="section-connexion">
-    <div id="connexion-container">
-        <img id="logo-greesy-connexion" src="assets/images/logo-greesy.png">
-        <h2>Gestion des chalets</h2>
-        <h3>Veuillez vous connecter</h3>
-        <p>Identifiant</p>
-        <input type="text">
-        <p>Mot de passe</p>
-        <input type="password">
-    </div>
+    <mat-card id=connexion-card>
+        <div id="connexion-container">
+            <img id="logo-greesy-connexion" src="assets/images/logo-greesy.png">
+            <h2>Gestion des chalets</h2>
+            <h3>Veuillez vous connecter</h3>
+            <form id="connection-form">
+                <mat-form-field>
+                    <mat-label>Identifiant</mat-label>
+                    <input matInput placeholder="email@example.com" type="text" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Mot de passe</mat-label>
+                    <input matInput type="password" required>
+                </mat-form-field>
+                <button type="submit" mat-stroked-button>Connexion</button>
+            </form>
+        </div>
+    </mat-card>
 </section>

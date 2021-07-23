@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Input } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Chalet } from '../models/chalet';
-import { ChaletsService } from '../services/chalets.service';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 

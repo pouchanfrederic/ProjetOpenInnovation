@@ -1,41 +1,45 @@
-<button (click)="onCalculateRouteClick()">Calculate route</button>
+<button mat-raised-button color="primary" (click)="onCalculateRouteClick()">Calculate route</button>
+<div id="table-container">
+    <table mat-table matSort class="mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="entite">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Entité </th>
+            <td mat-cell *matCellDef="let element"> {{element.entiteProprietaire}} </td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+        <ng-container matColumnDef="adresse">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
+            <td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ville">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Ville </th>
+            <td mat-cell *matCellDef="let element"> {{element.ville}} </td>
+        </ng-container>
 
-<table mat-table matSort class="mat-elevation-z8" [dataSource]="dataSource">
-    <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
-    <ng-container matColumnDef="entite">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Entité </th>
-        <td mat-cell *matCellDef="let element"> {{element.entiteProprietaire}} </td>
-    </ng-container>
-    <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
-        <td mat-cell *matCellDef="let element"> {{element.type}} </td>
-    </ng-container>
-    <ng-container matColumnDef="adresse">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Adresse </th>
-        <td mat-cell *matCellDef="let element"> {{element.adresse}} </td>
-    </ng-container>
-    <ng-container matColumnDef="ville">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ville </th>
-        <td mat-cell *matCellDef="let element"> {{element.ville}} </td>
-    </ng-container>
+        <ng-container matColumnDef="codeP">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Code Postal </th>
+            <td mat-cell *matCellDef="let element"> {{element.codeP}} </td>
+        </ng-container>
+        <ng-container matColumnDef="tauxRemplissage">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Taux de remplissage </th>
+            <td mat-cell *matCellDef="let element" [ngClass]="getClass(element)"> {{element.tauxRemplissage | percent }}
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="checkbox">
+            <th mat-header-cell *matHeaderCellDef> Selectionner</th>
+            <td mat-cell *matCellDef="let element">
+                <mat-checkbox class="example-margin" (change)="cbxOnChange($event, element)"></mat-checkbox>
+            </td>
 
-    <ng-container matColumnDef="codeP">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code Postal </th>
-        <td mat-cell *matCellDef="let element"> {{element.codeP}} </td>
-    </ng-container>
-    <ng-container matColumnDef="tauxRemplissage" >
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Taux de remplissage </th>
-        <td mat-cell *matCellDef="let element" [ngClass]="getClass(element)"> {{element.tauxRemplissage | percent }} </td>
-    </ng-container>
-    <ng-container matColumnDef="checkbox" >
-        <th mat-header-cell *matHeaderCellDef> Selectionner</th>
-        <td mat-cell *matCellDef="let element"> <mat-checkbox class="example-margin" (change) = "cbxOnChange($event, element)"></mat-checkbox> </td>
-        
-    </ng-container>
-    
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

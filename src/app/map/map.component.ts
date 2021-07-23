@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, Input, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { Chalet } from '../models/chalet';
-import { ChaletsService } from '../services/chalets.service';
 import OSM, { ATTRIBUTION } from 'ol/source/OSM';
 import { Coordinate } from 'ol/coordinate';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -11,19 +10,14 @@ import Point from 'ol/geom/Point';
 import Polyline from 'ol/format/Polyline';
 import VectorSource from 'ol/source/Vector';
 import View from 'ol/View';
-import XYZ from 'ol/source/XYZ';
 import {
   Circle as CircleStyle,
-  Fill,
   Icon,
   Stroke,
   Style,
 } from 'ol/style';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
-import { getVectorContext } from 'ol/render';
 import SimpleGeometry from 'ol/geom/SimpleGeometry';
-import MultiLineString from 'ol/geom/MultiLineString';
-import LineString from 'ol/geom/LineString';
 
 interface Body {
   'coordinates': number[][]

@@ -1,0 +1,30 @@
+/* Page de connexion */
+section div#connexion-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 2rem 0;
+}
+
+section div img#logo-greesy-connexion{
+    width: 50%;
+    height: 50%;
+}
+
+#section-connexion {
+    display: flex;
+    justify-content: center;
+}
+
+#connexion-card {
+    display: flex;
+    justify-content: center;
+    width:fit-content;
+}
+
+form#connection-form {
+    display: flex;
+    flex-direction: column;
+}

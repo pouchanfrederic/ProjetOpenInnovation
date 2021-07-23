@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { textHeights } from 'ol/render/canvas';
 import { Subject } from 'rxjs';
 import { Chalet } from '../models/chalet';
 import { ChaletsService } from '../services/chalets.service';
@@ -13,7 +12,6 @@ export class DashboardComponent implements OnInit {
 
   public chaletsList: Chalet[];
   isLoaded: boolean;
-  displayMap: boolean = false;
   updateMapSubject: Subject<Chalet[]> = new Subject<Chalet[]>();
 
 
@@ -28,13 +26,6 @@ export class DashboardComponent implements OnInit {
       this.chaletsList.sort((a,b) => b.tauxRemplissage - a.tauxRemplissage)
       this.isLoaded = true;
     });
-  }
-
-  onDisplayMap(){
-    if(this.displayMap)
-      this.displayMap = false;
-    else
-      this.displayMap = true;
   }
 
   updateMap(chaletsList: Chalet[]) {
